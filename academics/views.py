@@ -154,7 +154,6 @@ class ChapterEditView(RetrieveUpdateDestroyAPIView):
 class ChapterListView(APIView):
     serializer_class=ChapterViewSerializer
     permission_classes=[AllowAny]
-
     def post(self,request):
         grade = request.data.get('grade')
         subject=(request.data.get('subject')).upper()
@@ -172,13 +171,7 @@ class ChapterListView(APIView):
                     "chapter_no": object.chapter_no,
                     "description": object.description,
                     })
-                host = request.get_host()
-                context = {'data':data}
-                filename,status = render_to_pdf('academics/chapter.html','chapter_files',context)
-                if not status:
-                    return Response({'status':'given details incorrect'},status=HTTP_204_NO_CONTENT) 
-
-                return Response({'path':f'/media/chapter_files/{filename}.pdf'})
+                return Response(data)
         except:
             return Response({"status": "Not found"}, status=HTTP_204_NO_CONTENT)
         return Response({"status": "failed"}, status=HTTP_204_NO_CONTENT)
@@ -327,18 +320,12 @@ def load_subject_chapter(request):
         return render(request, 'academics/dropdown_list_options.html', {'items': subject})
     chapter = Chapter.objects.filter(subject=subject_id)
     return render(request, 'academics/dropdown_list_options.html', {'items': chapter})
-
 def chapterlistview(request):
-
     form= Chapterform()
     return render(request,'academics/chapters.html',{'form':form})
-
 def subjectlistview(request):
-
     form= Subjectform()
     return render(request,'academics/subjects.html',{'form':form})
-
-
 def questionview(request):
     questionform = Questionform()
     answerform = Answerform()

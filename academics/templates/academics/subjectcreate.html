@@ -2,10 +2,10 @@
 {% block subject %}
 
 <div class="subjectform">
-  <form>
+  
     {% csrf_token%}
   {{form.as_p}}
-  <button id="subject-btn">Submit</button></form>
+  <button id="subject-btn">Submit</button>
 
 </div>
 
@@ -17,6 +17,7 @@
 
 
 <script>
+  var token=localStorage.getItem('token')
   const container2 = document.querySelector('.subject-list');
   var messages = document.getElementById('message')
   url = 'https://schooltestproject.herokuapp.com/academics/subjects/'

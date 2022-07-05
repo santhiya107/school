@@ -2,11 +2,11 @@
     {% block content %}
        
         <div class="box1">
-    <form>
+  
         {% csrf_token %}
             {{form.as_p}}
             {{form1.as_p}}
-            <button id="chapter-btn"onclick=createquestion()>Create</button></div></form>
+            <button id="chapter-btn"onclick=createquestion()>Create</button></div>
     <script>
         function createquestion() {
            var grade = document.getElementById('id_grade').value

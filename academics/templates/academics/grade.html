@@ -1,16 +1,20 @@
 {% extends "base.html" %}
     {% block content %}
-       <div id="grade">
-         <form>
-           {% csrf_token %}
+       <div id="grade-box">
+
+        {% csrf_token %}
         {{form.as_p}}
        
         <button id="grade-btn"onclick=creategrade()>Create</button>
-         </form>
+       </div>
+       <div class="grade-list">
+
+      </div>
 <script>
+    var token = localStorage.getItem('token')
     function creategrade() {
        var grade = document.getElementById('id_grade').value
-       
+       let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
    
        fetch('https://schooltestproject.herokuapp.com/academics/grades/',
             {
@@ -20,7 +24,8 @@
            headers: {
                'Accept':'application/json',
                'Content-Type': 'application/json',
-               'Authorization':'token'+' '+token 
+               'Authorization':'token'+' '+token,
+               'X-CSRFToken': csrftoken
            },
        })
 
@@ -32,13 +37,45 @@
                throw new Error("Could not reach the API: " + response.statusText);
            }
        }).then(function(data) {
+        console.log(data)
        }).catch(function(error) {
           console.log(error.message)
        });
    return true;
 }
-</script>
 
+var list = document.querySelector('.grade-list');
+
+function get(){
+  fetch('https://schooltestproject.herokuapp.com/academics/grades/',{
+      method : 'GET',
+      headers : {
+        // 'X-CSRFToken': csrftoken,
+        'Authorization':'token'+' '+token 
+      },
+    }).then(res => {
+    return res.json()
+  }).then(data => {
+    let table2 = '<table>';
+    table2 += `<thead class="thead"><th>No</th><th>grade</th></thead>`;
+    console.log(data.data)
+    data.data.forEach((d, index) => {
+      table2 = table2 + `<tr id=${d.id}>`;
+      table2 = table2 + `<td >` + `${index}` + '</td>';
+      table2 = table2 + '<td>' + `${d.grade}` + '</td>';
+
+        table2 = table2 + `</tr>`;
+      })
+      table2 += "</table>";
+      list.innerHTML = table2;
+
+  })
+  };
+  get();
+
+
+</script>
+<!-- 
         </div>
         <div>
 
@@ -65,7 +102,6 @@
 
 
             
-        </div>
-        
-
+        </div> -->
+      
     {% endblock %}

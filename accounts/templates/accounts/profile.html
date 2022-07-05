@@ -2,8 +2,8 @@
 {% block profile %}
 <div class="container">
 </div>
-<div class='profile'>
-  <form>
+<div class='profile-box'>
+  
     {%csrf_token%}
 <label >Standard:</label><br><input type="text" id="std" placeholder="Standard"> 
 <label >Section:</label><br><input type="text" id="sec" placeholder="Section"> 
@@ -12,7 +12,7 @@
 <label >Fullname:</label><br><input type="text" id="ffname"placeholder="Full Name"> 
 <label >Address:</label><br><input type="text" id="address"placeholder="Address"> 
 <button id='profile-btn'>update</button>
-  </form>
+  
 </div>
 <script>
   let container = document.querySelector('.container');

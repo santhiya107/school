@@ -27,6 +27,7 @@ class Subject(models.Model):
     def save(self, *args, **kwargs):
         name = re.findall(r"[^\W\d_]+|\d+",self.name)
         self.name = (' '.join(name)).upper()
+        self.code = self.name[:3]+self.code
         self.code = (self.code).upper()
         super(Subject, self).save(*args, **kwargs)
         

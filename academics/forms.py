@@ -6,10 +6,6 @@ class Questionform(forms.ModelForm):
         model = Question
         fields ="__all__"
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['subject'].queryset = Subject.objects.none()
-    #     self.fields['chapter'].queryset = Chapter.objects.none()
 
 class Answerform(forms.ModelForm):
     class Meta:
@@ -26,11 +22,7 @@ class Subjectform(forms.ModelForm):
     class Meta:
         model = Subject
         fields ="__all__"
-class Loginform(forms.Form):    
-    email = forms.EmailField(widget=forms.TextInput(
-    attrs={"class": "form-control", "placeholder": "Email"}))
-    phone = forms.CharField(widget=forms.TextInput(
-    attrs={"class": "form-control", "placeholder": "Phone"}))
+
     
 class grade_form(forms.ModelForm):
     

@@ -2,11 +2,11 @@
 {% block chapter %}
 
 <div class="chapter">
-  <form>
+
     {% csrf_token %}   
   {{form.as_p}}
   <button id="chapter-btn">Submit</button>
-</form> 
+
 </div>
 <div id="message">
 

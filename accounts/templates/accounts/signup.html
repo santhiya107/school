@@ -1,10 +1,36 @@
-{% extends "base.html" %}
+{% extends 'base.html'%}
     {% block content %}
-<div class="signbox">
-<form>
+    <div class="signbox">   
+<div class="signbox1">
+
     {%csrf_token%}
-    {{form.as_p}}
-    <button id="chapter-btn" onclick=signup()>Register</button></form>
+    <label>Email:</label>
+    {{form.email}}
+    <label>Phone:</label>
+    {{form.phone}}
+    <label>Reg.No:</label>
+    {{form.register_number}}
+    <label>DOB:</label>
+    {{form.date_of_birth}}
+    <label>Standard:</label>
+    {{form.standard}}
+    <label>Section:</label>
+    {{form.section}}
+    <label>UserType:</label>
+    {{form.user_type}}</div>
+    <div class="signbox2">
+        <label>FirstName:</label>
+    {{form.first_name}}
+    <label>Lastname:</label>
+    {{form.last_name}}
+    <label>FullName:</label>
+    {{form.full_name}}
+    <label>Address:</label>
+    {{form.address}}
+    <label>DataEntry:</label>
+    {{form.data_entry_user}}</div>
+
+    <button id="signup-btn" onclick=signup()>Register</button>
 </div>
 </body>
 <script>
@@ -29,7 +55,7 @@
              {
             method: 'POST',
             body: JSON.stringify({ 'email': email, 'phone': phone, 'date_of_birth': dob, 'register_number': reg, 'user_type': type, 
-            'is_data_entry': is_dataentry, 'profile':{'first_name':firstname,'last_name':lastname,'standard':standard,'section':section,'full_name':fullname,'address':address}}
+            'is_data_entry': is_dataentry,'first_name':firstname,'last_name':lastname,'standard':standard,'section':section,'full_name':fullname,'address':address}
             ),
             headers: {
                 'Content-Type': 'application/json'

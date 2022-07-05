@@ -2,13 +2,13 @@
     {% block chapterlist %}
         
     <div class="box">
- <form>
+
       {% csrf_token %}  
      
        {{form.as_p}}
         <button id="chapter-btn" onclick=getchapter()>Getchapters</button>
    
-    </form>   
+    
         </div> 
    
         <script>

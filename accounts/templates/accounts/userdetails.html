@@ -2,7 +2,7 @@
 {% block userd %}
 
   <div class="userDetails">
-  </form>
+
   {%csrf_token%}
   <label for="email">Email:</label><br>
   <input type="email" id='email' placeholder="Email"> 
@@ -21,6 +21,7 @@
 
    <label for="sec">Section:</label><br>
    <input type="text" id="sec" placeholder="Section"> 
+    
 
    <label for="fname">Firstname:</label><br>
    <input type="text" id="fname" placeholder="First Name"> 
@@ -36,8 +37,8 @@
 
    <label for="file">Profile picture:</label><br>
    <input type="file" id="file"> 
-   <button id="submit">submit</button>
-</form>
+   <button id="userdetail-btn">submit</button></div>
+
   </div>
   <div class="container2"></div>
   
@@ -57,27 +58,41 @@
         }).then(res => {
           return res.json()
         }).then(data => {
-          console.log('data', data)
-          let htmlSegment = ''
-          data.forEach((d, index) => {
-            htmlSegment = htmlSegment + `<div class="user" id='${d.id}'>
-           <h3>Email</h3> <p class="email">${d.email}</p>
-           <h3>Phone</h3>   <p class="phone">${d.phone}</p>
-           <h3>Fullname</h3> <p class="fullname">${d.profile?.full_name}</p>
-           <h3>Firstname</h3> <p class="firstname">${d.profile?.first_name}</p>
-           <h3>Lastname</h3> <p class="lastname">${d.profile?.last_name}</p>
-           <h3>DOB</h3> <p class="DOB">${d.date_of_birth}</p>
-           <h3>Reg.no</h3>  <p class="reg">${d.register_number}</p>
-           <h3>Address</h3>  <p class="address">${d.profile?.address}</p>
-           <h3> Standard</h3> <p class="standard">${d.profile?.standard}</p>
-           <h3>Section</h3> <p class="section">${d.profile?.section}</p>
-            <a href=#" id='edit'>Edit</a>&nbsp<a href="#" id="delete">Delete</a></div>`
-          });
-          container2.innerHTML = htmlSegment;
+          let table2 = '<table>';
+            table2 += `<thead class="thead">
+              <th >Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">FullName</th>
+              <th scope="col">FirstName</th>
+              <th scope="col">LastName</th>
+              <th scope="col"style="width:80px">Date Of Birth</th>
+              <th scope="col">RegNo</th>
+              <th scope="col">Address</th>
+              <th scope="col">Standard</th>
+              <th scope="col">Section</th>
+              <th scope="col">Action</th>
+            </thead>`;
+            data.forEach((d, index) => {
+              table2 = table2 + `<tbody><tr id=${d.id}>`;
+              table2 = table2 + '<td class="grade">' + `${d.email}` + '</td>';
+              table2 = table2 + '<td class="code">' + `${d.phone}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.full_name}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.first_name}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.last_name}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.date_of_birth}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.register_number}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.address}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.standard}` + '</td>';
+              table2 = table2 + '<td class="name">' + `${d.profile?.section}` + '</td>';
+                table2 = table2 + '<td>' + `<a href=# id="edit" >Edit</a><a href=# id="delete" >delete</a>` + '</td></tbody>',
+               
+                table2 = table2 + `</tr>`;
+              })
+              table2 += "</table>";
+              container2.innerHTML = table2;
         })
       }userdetails();
        container2.addEventListener('click',(e) => {
-       
        form_email= document.getElementById('email');
        form_phone= document.getElementById('phone');
        form_reg= document.getElementById('reg');
@@ -88,8 +103,7 @@
        form_std= document.getElementById('std');
        form_sec= document.getElementById('sec');
        form_ad=document.getElementById('address');
-    
-       button= document.getElementById('submit')
+       button= document.getElementById('submit');
         e.preventDefault();
         let delbutton = e.target.id == 'delete';
         let editbutton = e.target.id == 'edit';
@@ -147,7 +161,7 @@
       method: 'GET',            
       headers: {            
       'Content-Type': 'application/json',            
-      'Authorization':'token'+' '+token,            
+      'Authorization':'token'+' '+token          
       // 'Content-Type': 'application/x-www-form-urlencoded',            
       }            
       }) .then(response => response.text())            

@@ -2,11 +2,11 @@
 {% block content %}
 
 <div id="questionForm" class="question_create">
-  <form>
+
     {%csrf_token%}
   {{questionform.as_p}}
   {{answerform.as_p}}
-  <button class="question-btn" id="question-btn">Submit</button></form>
+  <button class="question-btn" id="question-btn">Submit</button>
 </div>
 <div id="message">
 

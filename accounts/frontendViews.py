@@ -12,7 +12,8 @@ def signup(request):
     form=signup_form(data=request.POST)    
     return render(request,'accounts/signup.html',{'form':form})  
 def simple(request):      
-    return render(request,'accounts/login.html')
+    form=login_form()
+    return render(request,'accounts/login.html',{'form':form})
 def profile(request):    
     return render(request,'accounts/profile.html')
 def userdetails(request):    
