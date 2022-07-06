@@ -1,43 +1,102 @@
 {% extends "base.html" %}
     {% block chapterlist %}
         
-    <div class="box">
+    <div class="chapterlist-box">
 
       {% csrf_token %}  
      
        {{form.as_p}}
-        <button id="chapter-btn" onclick=getchapter()>Getchapters</button>
-   
-    
+        <button id="chapterlist-btn" onclick=getchapter()>Get Chapters</button>
+
         </div> 
-   
+        
+        <div class="container3">
+
+        </div>
+
+
         <script>
-            function getchapter() {
-            let token=localStorage.getItem("token")
+            
+
+
+        //     function getchapter() {
+        //     var token=localStorage.getItem("token")
+        //        var grade = document.getElementById('id_grade').value
+        //        var subject = document.getElementById('id_subject').value
+        //        console.log(grade+subject)
+        //        fetch('https://schooltestproject.herokuapp.com/academics/chapter-list/',{
+        //            method: 'POST',
+        //            body: JSON.stringify({ 'grade': grade,'subject':subject}
+        //            ),
+        //            headers:{
+        //                'Accept':'application/json',
+        //                'Content-Type': 'application/json',
+        //                'Authorization':'token'+' '+token 
+        //        }
+        //        }).then(response => response.json()).then(data=>{
+        //         console.log(data);
+        //         let path = `
+        //         <div class="chapters">
+        //             <div class="download">download your pdf file<a href="https://schooltestproject.herokuapp.com${data.path}"> here</a></div>
+        //         </div>`;
+        //         console.log(path)
+        //         let container = document.querySelector('.chapters');
+        //         container.innerHTML = path;
+        //     })
+        // }
+    
+        function getchapter() {
+               let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                var token=localStorage.getItem("token")
                var grade = document.getElementById('id_grade').value
                var subject = document.getElementById('id_subject').value
+               let container3 = document.querySelector('.container3');
                console.log(grade+subject)
                fetch('https://schooltestproject.herokuapp.com/academics/chapter-list/',{
                    method: 'POST',
                    body: JSON.stringify({ 'grade': grade,'subject':subject}
                    ),
-                   headers: new Headers( {
+                   headers:{
                        'Accept':'application/json',
                        'Content-Type': 'application/json',
-                       'Authorization':'token'+' '+token 
-               })
-               }).then(response => {
-                return response.json()
-            }).then(data=>{
-                console.log(data);
-                let path = `
-                <div class="chapters">
-                    <div class="download">download your pdf file<a href="https://schooltestproject.herokuapp.com${data.path}"> here</a></div>
-                </div>`;
-                let container = document.querySelector('.chapters');
-                container.innerHTML = path;
-            })
-        }
+                       'Authorization':'token'+' '+token,
+                       'X-CSRFToken': csrftoken
+               }
+               }).then(response => response.json()).then(data=>{
+                console.log(data);              
+                let htmlSegment = ''
+                data.data.map((d, index) => {                
+                htmlSegment = htmlSegment + `<div class="chapter-card" id='${d.id}'>                
+                <p class="email">${d.chapter_no}.${d.name}</p>                
+                        
+              
+              </div>`                
+                });
+                
+                container3.innerHTML = htmlSegment;
+                
+                })
+                
+                }
+               /* let table2 = '<table>';
+  
+    data.data.map(d => {
+      table2 = table2 + `<tr id=${d.id}>`;
+      table2 = table2 + '<td class="subject">' + `${d.chapter_no}` + '</td>';
+      table2 = table2 + '<td class="chapter_no">' + `${d.subject}` + '</td>';
+      table2 = table2 + '<td class="name">' + `${d.name}` + '</td>';
+      table2 = table2 + '<td class="description">' + `${d.description}` + '</td>',
+        table2 = table2 +`<td class="name">` + `${d.grade}` + `</td>`,
+        table2 = table2 + `</tr>`;
+      })
+      table2 += "</table>"; */
+
+                // console.log(path)
+                
+           
+
+
+
         function logout(){
             let token=localStorage.getItem("token")            
             console.log(token)            

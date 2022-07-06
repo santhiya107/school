@@ -34,6 +34,7 @@
             font-size:15px;
             border: none;
             outline:none;
+          
 
         } 
         input[type=text]{
@@ -54,8 +55,8 @@
             color:white;
             text-decoration:none;
         }       
-        .box{
-            background-color:#343a40;
+        .chapterlist-box{
+            background-color:#b2c8df;
             color:white;
             float:right;
             margin-left: 1100px;
@@ -66,7 +67,7 @@
           
         }
         .questionbox{
-            background-color:#343a40;
+            background-color: #b2c8df;
             color:white;
             float:right;
             margin-left: 1100px;
@@ -95,6 +96,7 @@
             padding: 30px 50px;
             position: fixed;
             margin-left: 1000px;
+            border-radius:5px;
         }
         .login{
             background-color:#343a40;
@@ -113,6 +115,7 @@
             width:250px;
             color:black;
             border:none;
+            outline:none;
             display:grid;
         } 
         table{
@@ -147,15 +150,15 @@
         background-color:#343a40;
     }
     .questionpath{
-        width:20%;
-        height:120px;
-        border-radius:5px;
-        margin-top:350px;
-        margin-left:200px;
-        padding:50px;
-        font-size:20px;
-        color:white;
-        background-color:#343a40;
+        width: 20%;
+        height: 52px;
+        border-radius: 5px;
+        margin-top: 350px;
+        margin-left: 200px;
+        padding: 10px;
+        font-size: 20px;
+        color: white;
+        background-color: #5C7AEA;
     }
     #question{
         color:black;
@@ -188,6 +191,13 @@
         border-radius:2px;
         text-align:center;
     }
+    .pdf{
+        padding:5px;
+        color:black
+    }
+    #edit{
+        color:black;
+    }
     .delete a{
         color:black;
        padding:10px;
@@ -198,7 +208,7 @@
           text-decoration:none;
       }
       .thead{
-        background-color:#343a40;
+        background-color:#5C7AEA;
         color:white;
       }
       .navbar-brand{
@@ -206,6 +216,10 @@
           color:black;
           font-weight:500px;
           font-size:18px;
+      }
+      a:acive{
+          text-decoration:none;
+          color:white;
       }
     #create{
         color:#343a40;
@@ -304,15 +318,24 @@
     }
    
    
-    #edit{
-        color:black;
-        text-decoration:none;
+#profile-edit{
+    color:#14279b;
+    background-color:#5c7aea;      
+    text-decoration:none;
+    border:1px solid #14279b;  
+    width: 229px;
+    margin: 20px 0;
+    padding: 5px;
 
     }
-  #delete{
-      color:black;
-      text-decoration:none;
-  }
+#profile-edit:hover{
+        color:white;
+        background-color:#14279b;  
+}
+#delete{
+    color:black;
+    text-decoration:none;
+}
 
 .chapter_create{
     background-color:#343a40;
@@ -361,14 +384,36 @@
     color:white;
     background-color:#14279b;
 }
-#chapter-btn{
-    width: 110px;
+#chapterlist-btn{
+    width: 150px;
     height: 39px;
-    margin-left: 68px;
+    margin-left: 50px;
     margin-top: 20px;
-    background-color:#343a40;
+    background-color:#b2c8df;
+    color:#14279b;
+    padding:5px 10px;
+    outline:none; 
+    border:1px solid #14279b;     
+}
+#questionlist-btn{
+    width: 150px;
+    height: 39px;
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color:#b2c8df;
+    color:#14279b;
+    padding:5px 10px;
+    outline:none; 
+    border:1px solid #14279b;     
+}
+#questionlist-btn:hover{
     color:white;
-    border:1px solid white;    
+    background-color:#14279b;
+}
+#chapterlist-btn:hover
+{
+    color:white;
+    background-color:#14279b;  
 }
 #userdetail-btn
 {
@@ -428,25 +473,65 @@ button {
 .user{
     width:25%;
     color:white;
-    background-color:#343a40;
+    background-color:#5c7aea;
     margin-top:50px;
-    font-size:20px;
+    font-size:18px;
     padding:20px;
+    border-radius:5px;
 } 
+.container3{
+    margin-top:175px;
+}
+.chapter-card{
+    width: 20%;
+    color: white;
+    background-color: #5c7aea;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 148px;
+}
+
+.user label{
+    width:100px;
+    display:inline-block;
+}
+.profile-label{
+    display:inline;
+}
+.fullname{
+display:inline;
+}
+.firstname{
+    display:inline;
+    }
+.lastname{
+    display:inline;
+    }
+.std{
+    display:inline;
+    }  
+.sec{
+    display:inline;
+    }
+.address{
+    display:inline;
+    }
 .userdataForm{
     display:flex;
 } 
 
 .userDetails{
-    background-color:#b2c8df;
-   
-    float:right;
-    margin-right:50px;
-    width:20%;
-    margin-top:10px;
-    padding:30px 50px;
-    position:fixed;
-    margin-left: 1400px;
+    background-color: #b2c8df;
+    float: right;
+    margin-right: 50px;
+    width: 21%;
+    margin-top: -20px;
+    padding: 30px 50px;
+    position: fixed;
+    margin-left: 1248px;
+    height: 92%;
 }
 
 .question-paper-card{
@@ -459,7 +544,7 @@ button {
     padding: 12px;
 }
 .question_create{
-    background-color:#343a40;
+    background-color: #b2c8df;
     color:white;   
     margin-left: 1100px;
     width:20%;
@@ -551,5 +636,7 @@ button {
             window.location.href='login'            
             } 
         </script>
+
+        
 </body>
 </html>

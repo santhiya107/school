@@ -35,14 +35,14 @@
   
             let htmlSegment = `<div class="user" id='${data.data.id}'>
                   
-                   <div class="fullname"><p>${data.data.profile?.full_name}</p></div>
-                   <div class="firstname"><p>${data.data.profile?.first_name}</p></div>
-                   <div class="lastname"><p>${data.data.profile?.last_name}</p></div>
-                   <div class="std"><p>${data.data.profile?.standard}</p></div>
-                   <div class="sec"><p>${data.data.profile?.section}</p></div>
-                   <div class="address"><p>${data.data.profile?.address}</p></div>
+              <label class=profile-label>Full Name:</label><p class="fullname">${data.data.profile?.full_name}</p><br>
+              <label class=profile-label>First Name:</label><p  class="firstname">${data.data.profile?.first_name}</p><br>
+                <label class=profile-label>Last Name:</label><p class="lastname">${data.data.profile?.last_name}</p><br>
+                  <label class=profile-label>Standard:</label><p  class="std">${data.data.profile?.standard}</p><br>
+                     <label class=profile-label>Section:</label><p class="sec">${data.data.profile?.section}</p></br>
+                     <label class=profile-label>Address: </label><p class="address">${data.data.profile?.address}</p><br>
 
-                   <a href=#" id='edit'>Edit</a>
+                   <button href=#" id='profile-edit'>Edit</button>
 
                    </div>`;
             container.innerHTML = htmlSegment;

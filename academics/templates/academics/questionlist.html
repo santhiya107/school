@@ -5,7 +5,7 @@
 
      {%csrf_token%}
        {{form.as_p}}
-        <button  id="chapter-btn"onclick=getquestion()>Get</button>
+        <button  id="questionlist-btn"onclick=getquestion()>Get</button>
         </div>      
 
         <script>
@@ -29,7 +29,7 @@
                }).then(data=>{
                    console.log(data)
                    let path = `
-                 <div class="questionpath">download your pdf file<a href="https://schooltestproject.herokuapp.com${data.path}"> here</a></div>
+                 <div class="questionpath">Download your pdf file<a class='pdf'href="https://schooltestproject.herokuapp.com${data.path}"> here</a></div>
                        
                    </div>`;
                    let questionPath = document.querySelector('.questionPath')
