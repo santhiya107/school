@@ -38,7 +38,7 @@
    <input type="file" id="file"> 
 
    <button id="userdetail-btn">submit</button>
-
+   
   </div>
   <div class="container2"></div>
   
@@ -72,7 +72,7 @@
               <th scope="col">Action</th>
             </thead>`;
             data.forEach((d, index) => {
-              if (`${d.user_type}`=='is_student'){
+              if (`${d.user_type}`=='is_staff'){
               table2 = table2 + `<tbody><tr id=${d.id}>`;
               table2 = table2 + '<td class="useremail">' + `${d.email}` + '</td>';
               table2 = table2 + '<td class="userphone">' + `${d.phone}` + '</td>';

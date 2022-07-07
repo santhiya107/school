@@ -8,9 +8,7 @@ import requests
 import json
 
 
-def simple(request):      
-    form=login_form()
-    return render(request,'accounts/login.html',{'form':form})
+
 
 def gradeview(request): 
     form=grade_form()  

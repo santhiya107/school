@@ -3,8 +3,7 @@ from.FrontendViews import *
 
 
 urlpatterns=[
-   
-    path('login',simple,name='login'),
+
     path('grade',gradeview,name='gradeview'),
     path('subject-list',subjectlist,name='subjectlist'),
     path('chaplist',chapterlistview,name='chapterlistview'),

@@ -47,7 +47,8 @@
         }         
         a{
             color:white;   
-            padding-left:50px;
+            padding-left:5px;
+            margin-left:28px;
             padding-top:10px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
@@ -88,15 +89,17 @@
            
 
         }
-        .profile-box{
+        #profile-box{
             background-color: #b2c8df;
+            display: none;
             color: black;
             width: 20%;
-            margin-top: -350px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-top: -51px;
             padding: 30px 50px;
             position: fixed;
-            margin-left: 1000px;
-            border-radius:5px;
+            margin-left: 817px;
+            border-radius: 5px;
         }
         .login{
             background-color:#343a40;
@@ -110,26 +113,15 @@
         #login{
             margin-left:100px;
         }
-        select{
-            padding:8px;
-            width:250px;
-            color:black;
-            border:none;
-            outline:none;
-            display:grid;
-        } 
+        
         table{
             font-size:15px;
-            width: 50%; 
+            width: 75%; 
             table-layout: auto;
+            margin-left: 18px;
         } 
     
-        .table {
-            margin:100px 100px;            
-            border-collapse: collapse;
-            width:50%;
-            font-size:15px;
-          }   
+         
           .errorlist{
               display:none;
           }    
@@ -137,7 +129,18 @@
     .navbar{
         background-color:#14279B ;        
         font-size:16px;
+        border-radius:0px;
+        width:208vh;
+        
     } 
+    .navbar a:hover{
+        background-color:white;
+       
+        color:black;
+      }
+      .navbar li a{
+          padding:1.8vh;
+      }
     .download{
         width:20%;
         height:120px;
@@ -208,8 +211,9 @@
           text-decoration:none;
       }
       .thead{
-        background-color:#5C7AEA;
-        color:white;
+        font-size:15px;
+        color:black;
+        text-align:justify;
       }
       .navbar-brand{
           padding:12px;
@@ -257,10 +261,14 @@
         padding-bottom: 100px;
     }
     th{
-        text-align: center;
+        text-align: start;
+        padding:13px;
     }
     td{
         padding:10px;
+        text-align:start;
+    }
+    th:last-child{
         text-align:center;
     }
    
@@ -291,22 +299,7 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
  
-    .signbox{
-        background-color:#B2C8DF;
-        color:black;
-    
-        margin-left:600px;
-        width:35%;
-        margin-top:150px;
-        padding:50px 50px;
-      }
-      .signbox {
-        display: flex;
-        flex-wrap: nowrap;        
-      }
-      .signbox2{
-          margin-left:50px;
-      }
+ 
     
      
       input[type=file] {
@@ -331,6 +324,12 @@
 #profile-edit:hover{
         color:white;
         background-color:#14279b;  
+}
+#profile-edit:active{
+    color:white;
+    background-color:#14279b;
+    border:1px solid #14279b;  
+    outline:none;  
 }
 #delete{
     color:black;
@@ -471,14 +470,25 @@ button {
     font-weight: 800;    
 } 
 .user{
-    width:25%;
-    color:white;
-    background-color:#5c7aea;
-    margin-top:50px;
-    font-size:18px;
-    padding:20px;
-    border-radius:5px;
+    width: 18;
+    height: 540px;
+    margin-left: 131px;
+    color: white;
+    background-color: #5c7aea;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 50px;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 5px;
+    position:fixed;
 } 
+.image{
+    margin-bottom:30px;
+    margin-left:150px;
+}
+img{
+    width:120px;
+}
 .container3{
     margin-top:175px;
 }
@@ -522,15 +532,16 @@ display:inline;
     display:flex;
 } 
 
-.userDetails{
+#userDetails{
     background-color: #b2c8df;
     float: right;
     margin-right: 50px;
+    display:none;
     width: 21%;
     margin-top: -20px;
-    padding: 30px 50px;
+    padding: 30px 70px;
     position: fixed;
-    margin-left: 1248px;
+    margin-left: 1450px;
     height: 92%;
 }
 
@@ -551,30 +562,14 @@ display:inline;
     margin-top:200px;
     padding:30px 50px;
 }
-#signup-btn{
-    width: 250px;
-    height: 39px;
-    margin-left: -240px;
-    margin-top: 434px;
-    color:#14279B;
-    outline:none;
-    background-color:#b2c8df;    
-    border:1px solid  #14279B;    
-}
-#signup-btn:hover{
-    background:#14279B;
-    color:white;
-}
-#id_data_entry_user{
-    margin-top:20px;
-    width:20px;
-}
+
+
 </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">        
-        <a class="navbar-brand"  href="#">School</a>        
+       
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"        
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        
         <span class="navbar-toggler-icon"></span>        
@@ -582,12 +577,9 @@ display:inline;
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">            
                 <li class="nav-item">
-                <a href="#"onClick="profile()">Profile</a>            
+                <a href="/f-accounts/profile">Profile</a>            
             </li>       
-            <li class="nav-item">
-                <a href="#"onClick="userdetails()">UserDetails</a>            
-            </li>        
-              
+           
             <li class="nav-item">            
             <a href="/f-academics/grade">Grade</a>            
             </li>            
@@ -606,7 +598,13 @@ display:inline;
             <li class="nav-item">            
                 <a href="#" onclick="logout()">Logout</a>            
                 </li>  
-              
+                <li class="nav-item">
+                    <a href="/f-accounts/students">Students</a>            
+                </li>        
+                  
+                <li class="nav-item">            
+                    <a href="/f-accounts/staffs" >Staff</a>            
+                    </li>  
             </ul>           
             </div>         
             </div>              

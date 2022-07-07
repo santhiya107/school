@@ -18,10 +18,7 @@
             color:white;
             text-decoration:none;
         }  
-        .navbar-nav{
-            margin-left:1000px;
-
-        }
+    
       footer p{
          color:black;
        }
@@ -73,20 +70,200 @@
           padding:20px 50px;
           border-radius:3px;   
         }      
+        .navbar-nav {
+          margin-left:905px;
+
+        }
         .navbar{
-          background-color:#14279B;         
+          background-color:#14279B;   
+          height:65px;   
+        
         }
       
        body{
         background-color:#B2C8DF;
        }
+       .navbar a {
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-left: 100px;
+        margin-top:100px;
+        padding:0px;
+        font-size:20px;
+    }
+  
+   
+    label{         
        
+        font-size:15px;   
+        color:black; 
+        display:grid; 
+        font-weight:bold;    
+        margin:0 3px;
+        line-height:1.5;
+         
+    }
+    .user label{
+      width:100px;
+      display:inline-block;
+  }
+  .profile-label{
+      display:inline;
+  }
+  .fullname{
+  display:inline;
+  }
+  .firstname{
+      display:inline;
+      }
+  .lastname{
+      display:inline;
+      }
+  .std{
+      display:inline;
+      }  
+  .sec{
+      display:inline;
+      }
+  .address{
+      display:inline;
+      }
+  .userdataForm{
+      display:flex;
+  } 
+  select{
+    padding:8px;
+    width:250px;
+    color:black;
+    border:none;
+    outline:none;
+    display:grid;
+    border-radius:5px;
+} 
+   
+    input{
+        padding:5px;
+        width:450px;
+        height:32px;
+        color:black;
+        font-size:15px;
+        border: none;
+        outline:none;
+        border-radius:5px;  
+        margin:5px;
+    } 
+    .login-box {
+        background-color: #a9c3df;;
+        color:black;
+        margin-left:600px;
+        width:31%;
+        margin-top:150px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius:10px;
+        padding:50px 50px;       
+        }
+        .login-box a{
+          color:black;
+          margin-left:138px;
+        }
+        .response{
+          margin-left: 807px;
+    margin-top: 19px;
+    position: absolute;
+
+    height: 26px;
+    background-color: ghostwhite;
+    padding: 2px;
+        }
+    h1 {
+        color: #000000;
+        font-size: 35px;
+        font-weight: 300;
+        margin-top:0px;
+        margin-left: -75px;
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }          
+    .login-btn{
+        width: 460px;
+        height: 39px;
+        margin-left: 5px;
+        margin-top: 20px;
+        margin-bottom:10px;
+        color:#14279B;
+        outline:none;            
+        background-color:#b2c8df;    
+        border:1px solid  #14279B;  
+        border-radius:5px;
+        font-size:17px;
+        font-weight:bold;  
+    }
+    .login-btn:hover{
+         background-color:#14279B;
+         color:white;
+    }
+    .signbox {
+      display: flex;
+      flex-wrap: nowrap;        
+    }
+    .signbox2{
+        margin-left:50px;
+    }
+    .signbox{
+      background-color:#B2C8DF;
+      color:black;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius:5px;
+      margin-left:600px;
+      width:35%;
+      margin-top:50px;
+      margin-bottom:-111px;
+      padding:50px 50px;
+    }
+    #signup-btn{
+      width: 250px;
+      height: 39px;
+      border-radius:5px;
+      margin-left: -240px;
+      margin-top: 434px;
+      color:#14279B;
+      outline:none;
+      background-color:#b2c8df;    
+      border:1px solid  #14279B;    
+  }
+  #signup-btn:hover{
+      background:#14279B;
+      color:white;
+  }
+  #id_data_entry_user{
+    margin-top:20px;
+    width:20px;
+}
+.signbox input[type=text]{
+  padding:5px;
+  width:250px;
+  margin-bottom:10px;
+  color:black;
+  font-size:15px;
+  border: none;
+}   
+#response{
+  margin-left: 762px;
+  width: 208px;
+  background-color: white;
+  height: 35px;
+  padding: 9px;
+  display: none;
+  border-radius: 6px;
+  margin-top: 14px;
+  position: absolute;
+}
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">        
-        <a class="navbar-brand" style="color:white" href="#">School</a>        
+       
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"        
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        
         <span class="navbar-toggler-icon"></span>        
@@ -115,24 +292,9 @@
             </div>         
             </div>              
             </nav>
-            <div class ="body">
-            <div id="getstarted"><a class="getstarted" href="/f-accounts/signup#" >GetStarted</a></div>
-            <p class="para">Examination Process is Important BUT Preparing Question Paper is Challenging. 
-                A simplified and easy to use solution to create question papers. With SetNow 
-                question Paper Generator entire tedious task of manual question paper creation
-                is eradicated swiftly and efficiently. SetNow question paper generator is a remarkable 
-                solution for schools/colleges and other educational institutes. Generally conducting an 
-                exam is an extremely lengthy process. This may take a lot of time. Teachers have no much
-                 time for creating question papers so exceedingly perceived school/universities hire other 
-                 resources who can make test papers. Using the free demo of question paper generator software, 
-                 the dependency on other human resources is decreasing. Question paper generator generates questions 
-                 in just minutes. The system allows to add a complexity of question-level using a multitude question 
-                 like Multiple Choice, Descriptive Question. The system generates module wise question paper. One can set 
-                 marks on question wise, module wise, module to module also the functionality of without displaying
-                  marks on the question paper. One can export question paper to pdf format after question paper generated.
-            </p>
-             <p class="already">Already have an account? <a class="login"href="/f-accounts/login#" >login</a></p>
-          </div>     
+            {% block contents %}{% endblock %}
+            {% block login %}{% endblock %}
+            {% block signup %}{% endblock %}
 
     <footer class="footer text-center text-white ">    
     <div class="container p-4 pb-0">  
@@ -144,7 +306,7 @@
         <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fa fa-linkedin"></i ></a>  
         <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fa fa-github"></i></a>
       </section>     
-  
+     
      <p> © 2020 Copyright:www.school.com</p>
     </div>    
   </footer>
