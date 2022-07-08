@@ -135,7 +135,7 @@ class StudentProfileView(RetrieveUpdateAPIView):
         return Response(serializer.data,status=HTTP_200_OK)
 
     def update(self, request,pk):
-        profile = Profile.objects.get(pk=pk)
+        profile = Profile.objects.get(user=pk)
         serializer = ProfileSerializer(profile,data=request.data)
         if serializer.is_valid():
             serializer.save()

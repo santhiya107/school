@@ -4,13 +4,14 @@ from.FrontendViews import *
 
 urlpatterns=[
 
-    path('grade',gradeview,name='gradeview'),
+    path('academics/',gradeview,name='academics'),   
+    path('question',questionview,name='question'),
+    path('question-paper',question_paperview,name='question_paper'),
+    
     path('subject-list',subjectlist,name='subjectlist'),
-    path('chaplist',chapterlistview,name='chapterlistview'),
+    path('chapterlist',chapterlistview,name='chapterlist'),
     path('subject',subjectcrud,name='subjectcrud'),
     path('chapter',chaptercrud,name='chaptercrud'),
     path('questions',questioncreationview,name='questioncreationview'),
-    path('queslist',questionlistview,name='questionlistview'),
-    path('ques',questionview,name='questionview'),
-    path('quespaper',question_paperview,name='question_paperview')
+    path('queslist',questionlistview,name='questionlistview')
 ]

@@ -1,16 +1,16 @@
 {% extends "base.html" %}
     {% block chapterlist %}
         
-    <div class="chapterlist-box">
+    <div class="box">
 
       {% csrf_token %}  
      
        {{form.as_p}}
-        <button id="chapterlist-btn" onclick=getchapter()>Get Chapters</button>
+        <button id="chapter-btn" onclick=getchapter()>Getchapters</button>
 
         </div> 
         
-        <div class="container3">
+        <div class="chapter-table">
 
         </div>
 
@@ -44,13 +44,12 @@
         //         container.innerHTML = path;
         //     })
         // }
-    
+
         function getchapter() {
-               let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+              let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
                 var token=localStorage.getItem("token")
                var grade = document.getElementById('id_grade').value
                var subject = document.getElementById('id_subject').value
-               let container3 = document.querySelector('.container3');
                console.log(grade+subject)
                fetch('https://schooltestproject.herokuapp.com/academics/chapter-list/',{
                    method: 'POST',
@@ -63,23 +62,9 @@
                        'X-CSRFToken': csrftoken
                }
                }).then(response => response.json()).then(data=>{
-                console.log(data);              
-                let htmlSegment = ''
-                data.data.map((d, index) => {                
-                htmlSegment = htmlSegment + `<div class="chapter-card" id='${d.id}'>                
-                <p class="email">${d.chapter_no}.${d.name}</p>                
-                        
-              
-              </div>`                
-                });
-                
-                container3.innerHTML = htmlSegment;
-                
-                })
-                
-                }
-               /* let table2 = '<table>';
-  
+                console.log(data);
+                let table2 = '<table>';
+    table2 += `<thead class="thead"><th>Chapter No</th><th>Subject</th><th>Chapter</th><th>Description</th><th>Grade</th></thead>`;
     data.data.map(d => {
       table2 = table2 + `<tr id=${d.id}>`;
       table2 = table2 + '<td class="subject">' + `${d.chapter_no}` + '</td>';
@@ -89,11 +74,14 @@
         table2 = table2 +`<td class="name">` + `${d.grade}` + `</td>`,
         table2 = table2 + `</tr>`;
       })
-      table2 += "</table>"; */
+      table2 += "</table>";
 
                 // console.log(path)
-                
-           
+                let container = document.querySelector('.chapter-table');
+                container.innerHTML = table2;
+            })
+        }
+
 
 
 

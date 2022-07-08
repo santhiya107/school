@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block chapter %}
-
+<div class="chapters-container">
 <div class="chapter">
 
     {% csrf_token %}   
@@ -17,19 +17,27 @@
 
 
 <script>
+
   const container2 = document.querySelector('.chapter-list');
   var messages = document.getElementById('message')
-  url = 'https://schooltestproject.herokuapp.com/academics/chapters/'
-
+  var token = localStorage.getItem('token')
+  let url = 'https://schooltestproject.herokuapp.com/academics/chapters/'
+  var edit = null
   function get(){
-  fetch(url).then(res => {
+  fetch(url,{
+      method : 'GET',
+      headers : {
+        // 'X-CSRFToken': csrftoken,
+        'Authorization':'token'+' '+token 
+      },
+    }).then(res => {
     return res.json()
   }).then(data => {
     let table2 = '<table>';
     table2 += `<thead class="thead"><th>subject</th><th>Chapter No</th><th>Chapter</th><th>Description</th><th>Edit</th><th>Delete</th></thead>`;
     data.forEach((d, index) => {
       table2 = table2 + `<tr id=${d.id}>`;
-      table2 = table2 + '<td class="subject">' + `${d.subject}` + '</td>';
+      table2 = table2 + `<td id='${d.subject}' class="subject">` + `${d.subject_name}` + '</td>';
       table2 = table2 + '<td class="chapter_no">' + `${d.chapter_no}` + '</td>';
       table2 = table2 + '<td class="name">' + `${d.name}` + '</td>';
       table2 = table2 + '<td class="description">' + `${d.description}` + '</td>',
@@ -54,6 +62,7 @@ container2.addEventListener('click',(e) => {
   e.preventDefault();
   let delbutton = e.target.id == 'delete';
   let editbutton = e.target.id == 'edit';
+  edit = editbutton
   let id = e.target.parentElement.parentElement.id;
   if(delbutton){
     const parent1 = e.target.parentElement.parentElement;
@@ -62,7 +71,6 @@ container2.addEventListener('click',(e) => {
       fetch(`${url}${id}/`,{
       method : 'DELETE',
       headers : {
-        
         'Authorization':'token'+' '+token 
       },
     }).then(() => 
@@ -74,7 +82,7 @@ container2.addEventListener('click',(e) => {
 
   if(editbutton){
     const parent = e.target.parentElement.parentElement;
-    var subject = parent.querySelector('.subject').textContent;
+    var subject = parent.querySelector('.subject').id;
     var chapter_no = parent.querySelector('.chapter_no').textContent;
     var name = parent.querySelector('.name').textContent;
     var description = parent.querySelector('.description').textContent;
@@ -82,13 +90,16 @@ container2.addEventListener('click',(e) => {
     form_chapter_no.value = chapter_no
     form_name.value = name
     form_description.value = description
+    let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     chapter_btn.addEventListener('click',()=>{
+      if(edit){
       fetch(`${url}${id}/`,{
         method : 'PUT',
         headers : {
           'content-Type' : 'application/json',
-          'Authorization':'token'+' '+token 
+          'Authorization':'token'+' '+token,
+          'X-CSRFToken': csrftoken
         },
         body: JSON.stringify({
           'subject' : form_subject.value,
@@ -100,7 +111,7 @@ container2.addEventListener('click',(e) => {
        location.reload()
       )
       
-    }) 
+  }}) 
   }
 });
   
@@ -111,7 +122,7 @@ container2.addEventListener('click',(e) => {
       var name = document.getElementById('id_name').value
       var description = document.getElementById('id_description').value
       var subject = document.getElementById('id_subject').value
-
+    if(!edit){
         fetch('https://schooltestproject.herokuapp.com/academics/chapters/',
         {
           method: 'POST',
@@ -119,25 +130,25 @@ container2.addEventListener('click',(e) => {
           ),
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
           },
         }).then(function (response) {
           if (response.status == 201) {
             console.log("Sucess response", response)
             messages.innerHTML = `${name} is created succesfully`;
             get();
-            return response.json();
           }else{
             console.log(response);
           }
         })
-  })
+  }})
 </script>
-
+</div>
 {% endblock %}
 
 
-           
+<!--            
 
 {% comment %} {% extends "base.html" %}
     {% block content %}
@@ -212,4 +223,4 @@ container2.addEventListener('click',(e) => {
         
      
         
-           {% endcomment %}
+           {% endcomment %} -->

@@ -1,3 +1,4 @@
+from operator import sub
 from rest_framework import serializers
 import re
 from .models import Grade, Question_Paper,Subject,Chapter,Answers,Question
@@ -11,34 +12,47 @@ class GradeSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if Grade.objects.filter(grade=data['grade']).exists():
-            raise serializers.ValidationError({'error':'invalid grade'})
+            raise serializers.ValidationError({'error':'grade altready exists'})
         return data
 
 class SubjectSerializer(serializers.ModelSerializer):
+    grade_name = serializers.SerializerMethodField('get_grade_name')
+
+    def get_grade_name(self, subject):
+        grade = Grade.objects.get(id=(subject.grade.id))
+        return grade.grade
+
     class Meta:
         model = Subject
-        fields = '__all__'
+        fields = ['id','grade','grade_name','name','code','created_at']
 
     def validate(self,data):
         name = data['name']
         name = re.findall(r"[^\W\d_]+|\d+",name)
-        data['name'] = (' '.join(name)).capitalize()
-        code = (data['code']).upper()
+        data['name'] = (' '.join(name)).upper()
+        self.code = self.name[:3]+self.code
+        code = (data['name'])[:3] + data['code']
         queryset = Subject.objects.all()
         if self.instance:
             id = self.instance.id
             queryset = queryset.exclude(id=id)
         if queryset.filter(name = data['name'],grade=data['grade']).exists():
-            raise serializers.ValidationError({'error':'invalid subject name'})
+            raise serializers.ValidationError({'error':'subject name altready exists'})
         if queryset.filter(code=code).exists():
-            raise serializers.ValidationError({'error':'invalid subject code'})
+            raise serializers.ValidationError({'error':'subject code altready exists'})
 
         return data
 
 class ChapterSerializer(serializers.ModelSerializer):
+    subject_name = serializers.SerializerMethodField('get_subject_name')
+
+    def get_subject_name(self, chapter):
+      subject = Subject.objects.get(id=(chapter.subject.id))
+      return subject.name
+
     class Meta:
         model = Chapter
-        fields = '__all__'
+        fields = ['id','subject','subject_name','name','chapter_no','description','created_at']
 
     def validate(self, data):
         name = data['name']
@@ -50,9 +64,9 @@ class ChapterSerializer(serializers.ModelSerializer):
             queryset = queryset.exclude(id=id)
 
         if queryset.filter(name = data['name'],subject=data['subject']).exists():
-            raise serializers.ValidationError({'error':'invalid chapter name'})
+            raise serializers.ValidationError({'error':'chapter name altready exists'})
         if queryset.filter(subject=data['subject'],chapter_no=data['chapter_no']).exists():
-            raise serializers.ValidationError({'error':'invalid cahpter no'})
+            raise serializers.ValidationError({'error':'cahpter no altready exists'})
 
         return data 
 
@@ -63,22 +77,24 @@ class ChapterViewSerializer(serializers.Serializer):
 
 class Question_answer_serializer(serializers.Serializer):
     grade = serializers.StringRelatedField(many=True,source ="Grade")
+    # subject = serializers.StringRelatedField(many=True,'')
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answers
         fields = ['option_a','option_b','option_c','option_d','answer']
 
-
 class questionanswerserializer(serializers.ModelSerializer):
-    answers = AnswerSerializer()
-    subject = serializers.StringRelatedField()
-    grade = serializers.StringRelatedField()
-    chapter = serializers.StringRelatedField()
+    subject = serializers.SlugRelatedField(slug_field='name', queryset=Subject.objects.all())
+    grade = serializers.SlugRelatedField(
+        slug_field='grade',
+        queryset= Grade.objects.all())
+    chapter = serializers.SlugRelatedField(
+        slug_field= 'name',
+        queryset= Chapter.objects.all())
     class Meta:
         model = Question
-        fields = ['id','grade','subject','chapter','question',
-                    'question_type','cognitive_level','difficulty_level','answers']
+        fields = ['id','grade','subject','chapter']
 
 class QuestionAnswerSerializer(serializers.ModelSerializer):
     answers = AnswerSerializer()
@@ -140,7 +156,15 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class QuestionPaperSerializer(serializers.ModelSerializer):
+    grade_name = serializers.SerializerMethodField('get_grade_name')
+    subject_name = serializers.SerializerMethodField('get_subject_name')
+    def get_grade_name(self, subject):
+      grade = Grade.objects.get(id=(subject.grade.id))
+      return grade.grade
+
+    def get_subject_name(self, chapter):
+      subject = Subject.objects.get(id=(chapter.subject.id))
+      return subject.name
     class Meta:
         model = Question_Paper
-        fields = '__all__'
-
+        fields = ['id','grade','grade_name','subject','subject_name','file','no_of_questions','created_by','created_at']

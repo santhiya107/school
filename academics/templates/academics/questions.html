@@ -2,7 +2,6 @@
     {% block content %}
        
         <div class="box1">
-  
         {% csrf_token %}
             {{form.as_p}}
             {{form1.as_p}}
@@ -21,7 +20,7 @@
            var option_c = document.getElementById('id_option_c').value
            var option_d = document.getElementById('id_option_d').value
            var answer = document.getElementById('id_answer').value 
-    
+           let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
            d=JSON.stringify({ 'grade': grade, 'subject': subject, 'chapter': chapter,'question':question, 'question_type': question_type, 'cognitive_level':cognitive_level, 
                'difficulty_level': difficulty_level, 'answers':{'option_a':option_a,'option_b':option_b,'option_c':option_c,'option_d':option_d,'answer':answer}}
                )
@@ -35,7 +34,8 @@
                headers: {
                    'Accept':'application/json',
                    'Content-Type': 'application/json',
-                   'Authorization':'token'+' '+token 
+                   'Authorization':'token'+' '+token,
+                   'X-CSRFToken': csrftoken
                },
            })
     

@@ -1,15 +1,21 @@
 {% extends "base.html" %}
     {% block content %}
-       <div id="grade-box">
+    <div class="grade-container">
+       <div class="grade-list">
+
+      </div>
+      <br>
+      <div class="subjects-by-grade">
+
+      </div>
+      <div id="grade">
 
         {% csrf_token %}
         {{form.as_p}}
        
         <button id="grade-btn"onclick=creategrade()>Create</button>
        </div>
-       <div class="grade-list">
-
-      </div>
+       </div>
 <script>
     var token = localStorage.getItem('token')
     function creategrade() {
@@ -47,6 +53,7 @@
 var list = document.querySelector('.grade-list');
 
 function get(){
+  var content = '<div class="cards">'
   fetch('https://schooltestproject.herokuapp.com/academics/grades/',{
       method : 'GET',
       headers : {
@@ -56,24 +63,77 @@ function get(){
     }).then(res => {
     return res.json()
   }).then(data => {
-    let table2 = '<table>';
-    table2 += `<thead class="thead"><th>No</th><th>grade</th></thead>`;
+    // let table2 = '<table>';
+    // table2 += `<thead class="thead"><th>No</th><th>grade</th></thead>`;
     console.log(data.data)
     data.data.forEach((d, index) => {
-      table2 = table2 + `<tr id=${d.id}>`;
-      table2 = table2 + `<td >` + `${index}` + '</td>';
-      table2 = table2 + '<td>' + `${d.grade}` + '</td>';
+      content = content + `  <div class="card" onclick=getsubject(${d.grade}) id=${d.id}>
+        <p class="grade">${d.grade}</p>
+ </div>`
 
-        table2 = table2 + `</tr>`;
+
+
+      // table2 = table2 + `<tr id=${d.id}>`;
+      // table2 = table2 + '<td class="grade">' + `${d.grade}` + '</td>';
+      // table2 = table2 + '<td class="code">' + `${d.code}` + '</td>';
+      // table2 = table2 + '<td class="name">' + `${d.name}` + '</td>';
+      //   table2 = table2 + '<td>' + `<a href=# id="edit" >Edit</a>` + '</td>',
+      //   table2 = table2 + '<td>' + `<a href=# id="delete" >delete</a>` + '</td>',
+      //   table2 = table2 + `</tr>`;
       })
-      table2 += "</table>";
-      list.innerHTML = table2;
+      // table2 += "</table>";
+      content += '</div>'
+      list.innerHTML = content;
+      // table2 = table2 + `<tr id=${d.id}>`;
+      // table2 = table2 + `<td >` + `${index}` + '</td>';
+      // table2 = table2 + '<td>' + `${d.grade}` + '</td>';
+
+      //   table2 = table2 + `</tr>`;
+
+      // table2 += "</table>";
+      // list.innerHTML = table2;
 
   })
   };
   get();
 
+  var container = document.querySelector('.subjects-by-grade')
 
+  function getsubject(grade_val){
+      console.log(grade_val);
+
+      url2 = new URL('https://schooltestproject.herokuapp.com/academics/subject-list/');
+      url2.searchParams.append('grade', grade_val);
+      var content = '<div class="cards">'
+      fetch(url2,{
+        method : 'GET',
+        headers : {
+          'content-Type' : 'application/json',
+          'Authorization':'token'+' '+token,
+        }}).then(res => {
+    return res.json()
+  }).then(data => {
+    // let table2 = '<table>';
+    // table2 += `<thead class="thead">
+    //   <th scope="col">grade</th>
+    //   <th scope="col">subject code</th>
+    //   <th scope="col">subject</th>
+    //   <th scope="col">Edit</th>
+    //   <th scope="col">Delete</th>
+    // </thead>`;
+    data.forEach((d, index) => {
+
+      content = content + `  <div class="card" id=${d.id}>
+        <p> Grade : <span class="grade">${d.grade_name}</span></p>
+        <p> Subject : <span class="name">${d.name}</span></p>
+        <p> Subject-code : <span class="code">${d.code}</span></p>
+        <br>
+        <p> <a style="color:blue;" href=# id="edit" >Edit</a> <a style="color:blue;" href=# id="delete" >delete</a></p>
+ </div>`
+  });
+   container.innerHTML = content;
+   list.innerHTML = ''
+  })}
 </script>
 <!-- 
         </div>

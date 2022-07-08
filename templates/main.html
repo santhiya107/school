@@ -149,6 +149,7 @@
         font-size:15px;
         border: none;
         outline:none;
+        background-color:white;
         border-radius:5px;  
         margin:5px;
     } 
@@ -273,7 +274,7 @@
                           
                       
             <li class="nav-item">            
-            <a href="/f-accounts/">Home</a>            
+            <a href="">Home</a>            
             </li>            
             <li class="nav-item">            
             <a href="">About Us</a>            
@@ -285,7 +286,7 @@
             <a href="">Contact Us</a>      
             </li>    
             <li class="nav-item">            
-                <a href="/f-accounts/login#" >Log In</a>            
+                <a id="nav-login" >Log In</a>            
                 </li>  
                
             </ul>           
@@ -295,7 +296,10 @@
             {% block contents %}{% endblock %}
             {% block login %}{% endblock %}
             {% block signup %}{% endblock %}
-
+<script>
+  var host = window.location.protocol + "//" + window.location.host;
+  document.getElementById('nav-login').href= `${host}/login`
+</script>
     <footer class="footer text-center text-white ">    
     <div class="container p-4 pb-0">  
       <section class="mb-4">        

@@ -16,15 +16,14 @@
             font-size:15px;   
             color:black;       
         }
-        #grade-box{           
-            background-color:#b2c8df;
-            
-            float:right;
-            boder:2px solid black;
-            width:20%;
-            margin-right:50px;
-            margin-top:200px;
-            padding:30px 50px;
+        #grade {
+            background-color: #b2c8df;
+            box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+            width: 20%;
+            padding: 30px 50px;
+            float: right;
+            margin-top: -795px;
+            margin-right: 71px;
         }
         input{
             padding:5px;
@@ -197,10 +196,8 @@
     .pdf{
         padding:5px;
         color:black
-    }
-    #edit{
-        color:black;
-    }
+    } 
+    
     .delete a{
         color:black;
        padding:10px;
@@ -269,7 +266,8 @@
         text-align:start;
     }
     th:last-child{
-        text-align:center;
+        text-align: start;
+        padding-left: 82px;
     }
    
     .frame {
@@ -298,9 +296,15 @@
         text-align: center;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
- 
- 
-    
+    select{
+        padding:8px;
+        width:250px;
+        color:black;
+        border:none;
+        outline:none;
+        display:grid;
+        border-radius:5px;
+    }     
      
       input[type=file] {
         border: none;
@@ -312,14 +316,13 @@
    
    
 #profile-edit{
-    color:#14279b;
-    background-color:#5c7aea;      
-    text-decoration:none;
-    border:1px solid #14279b;  
-    width: 229px;
-    margin: 20px 0;
+    color: #14279b;
+    background-color: #5c7aea;
+    text-decoration: none;
+    border: 1px solid #14279b;
+    width: 264px;
+    margin: 57px 0;
     padding: 5px;
-
     }
 #profile-edit:hover{
         color:white;
@@ -330,10 +333,6 @@
     background-color:#14279b;
     border:1px solid #14279b;  
     outline:none;  
-}
-#delete{
-    color:black;
-    text-decoration:none;
 }
 
 .chapter_create{
@@ -425,6 +424,7 @@
     color:#14279b;
     border:1px solid #14279b;  
 }
+
 #userdetail-btn:hover{
     background-color:#14279b;
     color:white;
@@ -439,28 +439,47 @@
     color:white;
     border:1px solid white;    
 }
-#grade-btn{
-    width: 110px;
-    height: 39px;
-    margin-left: 68px;
-    margin-top: 20px;
-    background-color:#b2c8df;
-    color:#14279b;
-    border:1px solid #14279b;   
+#grade-btn{      
+      
+        color:#14279B;
+        outline:none;            
+        background-color:#b2c8df;    
+        border:1px solid  #14279B;  
+        border-radius:5px;
+     
 }
 #grade-btn:hover{
     color:white;
     background-color:#14279b;
 
 }
-.question-btn{
-    width: 110px;
-    height: 39px;
-    margin-left: 68px;
-    margin-top: 20px;
-    background-color:#343a40;
+.question-btn{    
+        width: 110px;
+        height: 39px;
+        margin-left: 68px;
+        margin-top: 56px;
+        margin-bottom:17px;
+        background-color:#b2c8df;
+        color:#14279b;
+        border:1px solid #14279b;  
+}
+#edit{
+    color: white;
+    width: 25px;
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: #14279b;
+}
+#delete{
+    color:black;
+    background-color:#EAE3C8;
+    width: 25px;
+    padding: 7px 15px;
+    border-radius: 5px;
+}
+.question-btn:hover{
     color:white;
-    border:1px solid white;  
+    background-color:#14279b;
 }
 button {       
     border: none;
@@ -493,7 +512,7 @@ img{
     margin-top:175px;
 }
 .chapter-card{
-    width: 20%;
+    width: 87%;
     color: white;
     background-color: #5c7aea;
     margin-top: 10px;
@@ -556,13 +575,375 @@ display:inline;
 }
 .question_create{
     background-color: #b2c8df;
-    color:white;   
+    color: white;
+    margin-left: 1423px;
+    width: 20%;
+    margin-top: 174px;
+    padding: 30px 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.question-card{
+    margin-left: 173px;
+    font-size: 15px;
+    width: 285px;
+    padding: 22px;
+    background-color: #5c7aea;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.question-list{
+    width: 1000px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 45px;
+    margin-top: -1170px;
+    margin-left: -116px;
+}
+.question-card p{
+    color:white;
+    width:200px;
+    display:block;
+}
+.question-card label{
+    width:100px;
+    display:inline-block;
+}
+{% comment %} bhai {% endcomment %}
+.chapter_create{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    border:2px solid black;
+    width:20%;
+    margin-right:50px;
+    margin-top:200px;
+    padding:30px 50px;  
+}
+.chapter{
+    background-color:#435cf9;
+    color:white;
+    float:right;
     margin-left: 1100px;
     width:20%;
     margin-top:200px;
     padding:30px 50px;
+    position:fixed;
+
+}
+.subject-title{
+    margin-right: 6%;
+    margin-bottom: 0%;
+}
+.subjects-by-grade label{
+    width: 100px;
+    display: inline-block;
+    color: #000000;
+}
+.subjects-by-grade a{
+    width: 50px;
+    display: inline;
+    color: white;
+    /* margin: 0% 0%; */
+    /* padding-left: 10px;
+    padding-top: 10px; */
+    padding: 5px;
+}
+.subject-title-subjects{
+    margin-right: 36%;
+}
+.subject-head{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+.grade-container h2{
+    margin-left: 45%;
+    margin-top: 5%;
+    color: #14279b;
+}
+.grade-container hr{
+    width: 30%;
+    margin-left: 32%;
+    border: 2px solid gray;
+}
+.subjects-by-grade .cards{
+    display: grid;
+    width: 65%;
+    padding-left: 0%;
+    margin: 0% 15% 15%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+} 
+.grade-container button{
+    color: transparent;
+}
+.chapter-cards{
+    display: grid;
+    width: 65%;
+    padding-left: 0%;
+    margin: 0% 15% 15%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+}
+#back-btn-chapter{
+    display: inline;
 }
 
+.chapter-cards .chapter-card
+{
+    min-height: 30vh;
+    padding: 15% 12%;
+    cursor: pointer;
+    /* padding-left: 12%; */
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.subjects-by-grade  .subject-card{
+
+    max-height: 30vh;
+    padding: 15% 12%;
+    cursor: pointer;
+    /* padding-left: 12%; */
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.grade-list .card{
+    height: 15vh;
+    padding-top: 35%;
+    cursor: pointer;
+    padding-left: 42%;
+    font-size: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.grade-list .cards{
+    display: grid;
+    width: 40%;
+    padding-left: 5%;
+    margin: 0% 25% 20%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+}
+
+.subject-list{
+    width: 170%;
+    margin-top: 5%;
+}
+option{
+    font-size: 16px;
+}
+.subject-list label{
+    width: 10%;
+    /* display: inline-block; */
+}
+.chapter-list label{
+    width: 10%;
+}
+
+#gradeforsubject{
+    /* display: block; */
+    /* text-align: center; */
+    margin-left: 55%;
+    padding-left: 10px;
+}
+.subject-container{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: space-around;
+}
+.subject-container-1 input{
+    /* background-color: #000000; */
+    /* color: white; */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.subject-container-1{
+    flex-basis: 60%;
+    margin-left: 5%;
+    /* margin-top: 10vh; */
+}
+.subject-container-2{
+    flex-basis: 30%;
+    margin-right: 5%;
+}
+.subject-container-1 .cards{
+    display: grid;
+    width: 55%;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+}
+.subject-container-1 .card{
+    height: 25vh;
+    padding: 14%;
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* width: 15%; */
+}
+.subjectform{
+    background-color:#435cf9;;
+    color:white;
+    /* margin-left: 70%; */
+    /* width:20%; */
+    margin-top: 30vh;
+    padding:30px 50px;
+    /* position:fixed; */
+
+}
+.chapterlist a{
+    color: white;
+    padding: 8px;
+}
+.chapterlist label{
+    color: #000000;
+    display: inline-block;
+    width: 100px;
+}
+.chapterlist h4{
+    margin-left: 45.5%;
+    margin-top: 1%;
+    /* margin-right: 45%; */
+    color: #14279b;
+}
+
+
+.chapter-list table{
+    margin: 5%;
+}
+
+
+/* #chapter-btn{
+    /* width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 20px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;    
+} */
+.chapter-btns{
+    display: flex;
+    justify-content: space-around;
+}
+.chapter-btns button{
+    padding: 5px 10px;
+    font-size: 12px;
+}
+#submit
+{
+    width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 50px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;  
+}
+
+#subject-btn{
+    width: 30%;
+    height: 39px;
+    margin-left: 35%;
+    margin-top: 20px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;    
+}
+
+button {       
+    border: none;
+    border-radius: 5px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+    font-weight: 800;    
+} 
+
+.userdataForm{
+    display:flex;
+} 
+.userDetails{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    margin-right:50px;
+    width:20%;
+    margin-top:-5px;
+    padding:30px 50px;
+    position:fixed;
+    margin-left: 600px;
+}
+.userDetails1{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    margin-right:50px;
+    width:20%;
+    margin-top:0px;
+    padding:30px 50px;
+    position:fixed;
+    margin-left: 800px;
+}
+.question-paper-card a{
+    color: blue;
+}
+.question-paper-card{
+    font-size: 15px;
+    /* background-color: #435cf9; */
+    color: black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10%;
+}
+.question-paper-subject{
+    display: flex;
+    justify-content: space-around;
+    margin: 5%;
+}
+.question-paper{
+    flex-basis: 40%;
+    font-size: 16px;
+    background-color: #435cf9;
+    padding: 3%;
+    color: white;
+}
+.question-paper-form{
+            background-color:#435cf9;
+            width:20%;
+            padding:30px 50px;
+            /* flex-basis: 30%; */
+}
+.prev-question-papers{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5%;
+    margin: 5%;
+}
+.prev-question-heading h2,.prev-question-heading h3{
+    text-align: center;
+    color: #14279b;
+} 
+
+#subject-title-question{
+    margin-bottom: 2%;
+}
+
+.prev-question-heading hr{
+    width: 30%;
+    margin-left: 36%;
+    border: 2px solid gray;
+}
+
+#get-questions-button{
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    margin: 2% 10% 5%;
+}
 
 </style>
 </head>
@@ -577,33 +958,36 @@ display:inline;
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">            
                 <li class="nav-item">
-                <a href="/f-accounts/profile">Profile</a>            
+                <a id="nav-profile" >Profile</a>            
             </li>       
            
             <li class="nav-item">            
-            <a href="/f-academics/grade">Grade</a>            
+            <a id="nav-academics">Academics</a>            
             </li>            
-            <li class="nav-item">            
+            {% comment %} <li class="nav-item">            
             <a href="/f-academics/subject">Subject</a>            
             </li>            
             <li class="nav-item">            
             <a href="/f-academics/chapter">Chapter</a>            
-            </li>       
+            </li>        {% endcomment %}
             <li class="nav-item">            
-                <a href="/f-academics/chaplist">ChapterList</a>            
+                <a id="nav-chapterlist">ChapterList</a>            
                 </li>        
             <li class="nav-item">            
-            <a href="/f-academics/queslist">QuestionList</a>      
-            </li>    
+            <a id="nav-question">Question</a>      
+            </li> 
+            <li class="nav-item">            
+                <a id="nav-questionpaper">QuestionPaper</a>      
+                </li>    
             <li class="nav-item">            
                 <a href="#" onclick="logout()">Logout</a>            
                 </li>  
                 <li class="nav-item">
-                    <a href="/f-accounts/students">Students</a>            
+                    <a id="nav-students">Students</a>            
                 </li>        
                   
                 <li class="nav-item">            
-                    <a href="/f-accounts/staffs" >Staff</a>            
+                    <a id="nav-staffs" >Staff</a>            
                     </li>  
             </ul>           
             </div>         
@@ -616,9 +1000,15 @@ display:inline;
     {% block userd %}{% endblock %}
     {% block question %}{% endblock %}
     {% block chapterlist %}{% endblock %}
-
     <script>
-  
+        var host = window.location.protocol + "//" + window.location.host;
+        document.getElementById('nav-profile').href= `${host}/profile`
+        document.getElementById('nav-academics').href= `${host}/academics`
+        document.getElementById('nav-chapterlist').href= `${host}/chapterlist`
+        document.getElementById('nav-question').href= `${host}/question`
+        document.getElementById('nav-questionpaper').href= `${host}/question-paper`
+        document.getElementById('nav-students').href= `${host}/students`
+        document.getElementById('nav-staffs').href= `${host}/staffs`
         function logout(){
             let token=localStorage.getItem("token")            
             console.log(token)            

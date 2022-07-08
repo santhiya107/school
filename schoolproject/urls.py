@@ -23,10 +23,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',include('accounts.urls')),
-    path('academics/',include('academics.urls')),
-    path('f-academics/',include('academics.FrontendUrl')),
-    path('f-accounts/',include('accounts.frontendUrls')),
-    path('auth/',include('accounts.urls')),
+    path('api/',include('academics.urls')),
+    path('',include('academics.FrontendUrl')),
+    path('',include('accounts.frontendUrls')),
+    path('api/',include('accounts.urls')),
 ]
 
 

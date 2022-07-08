@@ -11,11 +11,7 @@ from .views import (
     QuestionEditView,
     QuestionList,
     QuestionPaperView,
-    frquestion,
-    load_subject_chapter,
-    chapterlistview,
-    subjectlistview,
-    questionview,
+
 )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -31,9 +27,5 @@ urlpatterns=[
     path('question/<int:pk>/',QuestionEditView.as_view()),
     path('question-paper/',QuestionList.as_view()),
     path('question-paper/<int:pk>/',QuestionPaperView.as_view()),
-    path('frq/',frquestion), 
-    path('ajax/load-subject/',load_subject_chapter,name='ajax_load_subjects'),
-    path('chapterfr/',chapterlistview),
-    path('subjectfr/',subjectlistview),
-    path('question-l/',questionview)
+
 ]

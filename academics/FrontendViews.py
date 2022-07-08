@@ -9,15 +9,23 @@ import json
 
 
 
-
 def gradeview(request): 
-    form=grade_form()  
-    return render(request,'academics/grade.html',{'form':form})
+    # form=grade_form()  
+    # response=requests.get('https://schooltestproject.herokuapp.com/academics/grades/')
+    # grade=response.json()    
+    # return render(request,'academics/grade.html',{'grade':grade,'form':form})
+    gradeform = grade_form
+    subjectform = Subjectform
+    chapterform = Chapterform
+    return render(request,'academics/grade-subject-chapter.html',{'gradeform':gradeform,'subjectform':subjectform,'chapterform':chapterform})
+
 
 def questioncreationview(request): 
     form=question_form()
-    form1=answer_form()      
-    return render(request,'academics/question.html',{'form':form,'form1':form1})
+    form1=answer_form()  
+    response=requests.get('https://schooltestproject.herokuapp.com/academics/question/')
+    question=response.json()   
+    return render(request,'academics/question.html',{'question':question,'form':form,'form1':form1})
 
  
 def chapterlistview(request):
@@ -42,13 +50,32 @@ def questionview(request):
     return render(request,'academics/questionandanswers.html',{'answerform':answerform,'questionform':questionform})
 
 def question_paperview(request):
-     return render(request,'academics/question_paper.html')
+    form=questionlist_form()
+    list_form = chapterlist_form()
+    return render(request,'academics/question_paper.html',{'form':form,'list_form':list_form})
 
 def subjectlist(request):
     form=grade_form()  
     return render(request,'academics/gradelist.html',{'form':form})
     
  
+
+from urllib import response
+from . forms import *
+from django.shortcuts import render,redirect
+from .models import *
+import requests
+import json
+
+
+
+
+
+
+
+ 
+
+
 
 
 
