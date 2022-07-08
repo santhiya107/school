@@ -19,7 +19,7 @@
 <script>
   const container2 = document.querySelector('.chapter-list');
   var messages = document.getElementById('message')
-  url = 'https://schooltestproject.herokuapp.com/academics/chapters/'
+  url = 'https://schooltestproject.herokuapp.com/api/chapters/'
 
   function get(){
   fetch(url).then(res => {
@@ -112,7 +112,7 @@ container2.addEventListener('click',(e) => {
       var description = document.getElementById('id_description').value
       var subject = document.getElementById('id_subject').value
 
-        fetch('https://schooltestproject.herokuapp.com/academics/chapters/',
+        fetch('https://schooltestproject.herokuapp.com/api/chapters/',
         {
           method: 'POST',
           body: JSON.stringify({ 'chapter_no': chapterno, 'name': name, 'description': description, 'subject': subject }

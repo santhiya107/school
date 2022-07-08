@@ -19,7 +19,7 @@
 <script>
   const container2 = document.querySelector('.question-list');
   var messages = document.getElementById('message')
-  url = 'https://schooltestproject.herokuapp.com/academics/question/'
+  url = 'https://schooltestproject.herokuapp.com/api/question/'
 
   function get() {
     fetch(url).then(res => {
@@ -60,7 +60,7 @@
   var edit = null;
 
   $("#id_grade").change(function () {
-      var url_for_change = 'https://schooltestproject.herokuapp.com/academics/ajax/load-subject/'; 
+      var url_for_change = 'https://schooltestproject.herokuapp.com/api/ajax/load-subject/'; 
       var gradeId = $(this).val(); 
 
       $.ajax({                       
@@ -76,7 +76,7 @@
     });
 
     $('#id_subject').change(function(){
-        var url_for_change = 'https://schooltestproject.herokuapp.com/academics/ajax/load-subject/'; 
+        var url_for_change = 'https://schooltestproject.herokuapp.com/api/ajax/load-subject/'; 
         var subjectId = $(this).val();
 
         $.ajax({

@@ -13,8 +13,8 @@
   const container2 = document.querySelector('.question-paper-list');
   var messages = document.getElementById('message')
   blank_url = 'https://schooltestproject.herokuapp.com'
-  for_answer = '/academics/question-paper/'
-  url = 'https://schooltestproject.herokuapp.com/academics/question-paper-list/'
+  for_answer = '/api/question-paper/'
+  url = 'https://schooltestproject.herokuapp.com/api/question-paper-list/'
   function get() {
     fetch(url).then(res => {
       return res.json()
