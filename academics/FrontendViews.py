@@ -60,14 +60,6 @@ def subjectlist(request):
     
  
 
-from urllib import response
-from . forms import *
-from django.shortcuts import render,redirect
-from .models import *
-import requests
-import json
-
-
 
 
 

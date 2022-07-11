@@ -60,7 +60,7 @@
   document.getElementById('prev-question-heading').style.display = "none"
   blank_url = 'https://schooltestproject.herokuapp.com'
   for_answer = '/academics/question-paper/'
-  url = 'https://schooltestproject.herokuapp.com/academics/question-paper-list/'
+  url = 'https://schooltestproject.herokuapp.com/api/question-paper-list/'
 
 
 function getsubjectquestions(){
@@ -125,7 +125,7 @@ function savequestion(){
 
   no_of_question= document.getElementById('id_no_of_questions').value
   console.log(grade+subject)
-  let url1 = new URL('https://schooltestproject.herokuapp.com/academics/question-paper/')
+  let url1 = new URL('https://schooltestproject.herokuapp.com/api/question-paper/')
   url1.searchParams.append('type', 'save');
   let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
    console.log(url1)
@@ -173,7 +173,7 @@ function getquestion() {
   no_of_question= document.getElementById('id_no_of_questions').value
   console.log(grade+subject)
   let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-  fetch('https://schooltestproject.herokuapp.com/academics/question-paper/',{
+  fetch('https://schooltestproject.herokuapp.com/api/question-paper/',{
       method: 'POST',
       body: JSON.stringify({ 'grade': grade,'subject':subject,'number_of_questions':no_of_question}
       ),
@@ -225,7 +225,7 @@ function downloadfile(uri) {
 
 
 function getquestionanswerpaper(id){
-  let url2 = new URL(`https://schooltestproject.herokuapp.com/academics/question-paper/${id}/`)
+  let url2 = new URL(`https://schooltestproject.herokuapp.com/api/question-paper/${id}/`)
   url2.searchParams.append('type', 'file');
   fetch(url2,{ 
         method : 'GET',

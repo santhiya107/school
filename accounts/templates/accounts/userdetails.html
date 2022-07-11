@@ -48,7 +48,7 @@
     function userdetails() {
         let token = localStorage.getItem("token")
         console.log(token)
-        fetch('https://schooltestproject.herokuapp.com/auth/user-details/', {
+        fetch('https://schooltestproject.herokuapp.com/api/user-details/', {
           method: 'GET',
           headers: new Headers({
             'Authorization': 'token' + ' ' + token,
@@ -109,14 +109,14 @@
         let id = e.target.parentElement.parentElement.id
         console.log(id)
                 if(delbutton){
-          url="https://schooltestproject.herokuapp.com/auth/user-details/"
+          url="https://schooltestproject.herokuapp.com/api/user-details/"
           fetch(`${url}${id}/`,{
             method : 'DELETE',
           }).then(res => res.json()).then(() => location.reload())
         }
         if(editbutton){
           form.style.display='block'
-          url="https://schooltestproject.herokuapp.com/auth/user-details/"
+          url="https://schooltestproject.herokuapp.com/api/user-details/"
           const parent = e.target.parentElement.parentElement;
           console.log(parent)
           let email = parent.querySelector(".useremail").textContent;
@@ -160,7 +160,7 @@
     function logout(){
       let token=localStorage.getItem("token")            
       console.log(token)            
-      fetch('https://schooltestproject.herokuapp.com/auth/logout/',            
+      fetch('https://schooltestproject.herokuapp.com/api/logout/',            
       {            
       method: 'GET',            
       headers: {            

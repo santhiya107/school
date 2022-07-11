@@ -21,7 +21,7 @@
                var subject = document.getElementById('id_subject').value
                var no_of_question= document.getElementById('id_no_of_questions').value
                console.log(grade+subject)
-               url = new URL('https://schooltestproject.herokuapp.com/academics/question-paper/')
+               url = new URL('https://schooltestproject.herokuapp.com/api/question-paper/')
                url.searchParams.append('type', 'save');
                let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
                 console.log(url)
@@ -68,7 +68,7 @@
                var no_of_question= document.getElementById('id_no_of_questions').value
                console.log(grade+subject)
                let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-               fetch('https://schooltestproject.herokuapp.com/academics/question-paper/',{
+               fetch('https://schooltestproject.herokuapp.com/api/question-paper/',{
                    method: 'POST',
                    body: JSON.stringify({ 'grade': grade,'subject':subject,'number_of_questions':no_of_question}
                    ),
@@ -104,7 +104,7 @@
         function logout(){
             let token=localStorage.getItem("token")            
             console.log(token)            
-            fetch('https://schooltestproject.herokuapp.com/auth/logout/',            
+            fetch('https://schooltestproject.herokuapp.com/api/logout/',            
             {            
             method: 'GET',            
             headers: {            

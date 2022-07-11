@@ -37,7 +37,7 @@ document.getElementById('gradeforsubject').onchange = function get_subject(){
       grade_val = document.getElementById('gradeforsubject').value;
       console.log(grade_val);
       if(grade_val){
-      url2 = new URL('https://schooltestproject.herokuapp.com/academics/subject-list/');
+      url2 = new URL('https://schooltestproject.herokuapp.com/api/subject-list/');
       url2.searchParams.append('grade', grade_val);
       url1 = url2;
       var content = '<div class="cards">'
@@ -194,7 +194,7 @@ console.log(editbutton,'dfg')
       console.log(edit)
         if(!edit){
           console.log(edit)
-        fetch('https://schooltestproject.herokuapp.com/academics/subjects/',
+        fetch('https://schooltestproject.herokuapp.com/api/subjects/',
         {
           method: 'POST',
           body: JSON.stringify({ 'code': code, 'name': name, 'grade': grade}
@@ -218,7 +218,7 @@ console.log(editbutton,'dfg')
   function logout(){
     let token=localStorage.getItem("token")            
     console.log(token)            
-    fetch('https://schooltestproject.herokuapp.com/auth/logout/',            
+    fetch('https://schooltestproject.herokuapp.com/api/logout/',            
     {            
     method: 'GET',            
     headers: {            

@@ -21,7 +21,7 @@
     function profile() {
         let token = localStorage.getItem('token')
         console.log(token)
-        fetch('https://schooltestproject.herokuapp.com/auth/profile/', {
+        fetch('https://schooltestproject.herokuapp.com/api/profile/', {
           method: 'GET',
           headers: new Headers({
             'Authorization': 'token' + ' ' + token,
@@ -66,7 +66,7 @@
             {
               form.style.display='block'
               console.log('hi')
-              url="https://schooltestproject.herokuapp.com/auth/student-profile/"
+              url="https://schooltestproject.herokuapp.com/api/student-profile/"
               const parent = e.target.parentElement;
               console.log(parent)
               let fullname = parent.querySelector('.fullname').textContent;
@@ -104,7 +104,7 @@
         function logout(){
           let token=localStorage.getItem("token")            
           console.log(token)            
-          fetch('https://schooltestproject.herokuapp.com/auth/logout/',            
+          fetch('https://schooltestproject.herokuapp.com/api/logout/',            
           {            
           method: 'GET',            
           headers: {            
