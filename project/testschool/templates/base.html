@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js">
+    </script><link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School</title>
+    <style>
+        label{
+           
+           
+            font-size:15px;   
+            color:black;       
+        }
+        #grade {
+            background-color: #b2c8df;
+            box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+            width: 20%;
+            padding: 30px 50px;
+            float: right;
+            margin-top: -795px;
+            margin-right: 71px;
+        }
+        input{
+            padding:5px;
+            width:250px;
+            margin-bottom:10px;
+            color:black;
+            font-size:15px;
+            border: none;
+            outline:none;
+          
+
+        } 
+        input[type=text]{
+            padding:5px;
+            width:250px;
+            margin-bottom:10px;
+            color:black;
+            font-size:15px;
+            border: none;
+        }         
+        a{
+            color:white;   
+            padding-left:5px;
+            margin-left:28px;
+            padding-top:10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        a:hover{
+            color:white;
+            text-decoration:none;
+        }       
+        .chapterlist-box{
+            background-color:#b2c8df;
+            color:white;
+            float:right;
+            margin-left: 1100px;
+            width:20%;
+            margin-top:200px;
+            padding:30px 50px;
+            position:fixed;
+          
+        }
+        .questionbox{
+            background-color: #b2c8df;
+            color:white;
+            float:right;
+            margin-left: 1100px;
+            width:20%;
+            margin-top:200px;
+            padding:30px 50px;
+            position:fixed;
+          
+        }
+        .box1{
+            background-color:#343a40;
+            color:white;
+            float:right;
+            margin-right:50px;
+            width:20%;
+            margin-top:100px;
+            padding:30px 50px;
+           
+
+        }
+        #profile-box{
+            background-color: #b2c8df;
+            display: none;
+            color: black;
+            width: 20%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-top: -51px;
+            padding: 30px 50px;
+            position: fixed;
+            margin-left: 817px;
+            border-radius: 5px;
+        }
+        .login{
+            background-color:#343a40;
+            color:white;
+            width:20%;
+            margin-top:200px;
+            margin-left:700px;
+            padding:30px 50px;
+        }               
+       
+        #login{
+            margin-left:100px;
+        }
+        
+        table{
+            font-size:15px;
+            width: 75%; 
+            table-layout: auto;
+            margin-left: 18px;
+        } 
+    
+         
+          .errorlist{
+              display:none;
+          }    
+
+    .navbar{
+        background-color:#14279B ;        
+        font-size:16px;
+        border-radius:0px;
+        width:208vh;
+        
+    } 
+    .navbar a:hover{
+        background-color:white;
+       
+        color:black;
+      }
+      .navbar li a{
+          padding:1.8vh;
+      }
+    .download{
+        width:20%;
+        height:120px;
+        border-radius:5px;
+        margin-top:350px;
+        margin-left:200px;
+        padding:50px;
+        font-size:20px;
+        color:white;
+        background-color:#343a40;
+    }
+    .questionpath{
+        width: 20%;
+        height: 52px;
+        border-radius: 5px;
+        margin-top: 350px;
+        margin-left: 200px;
+        padding: 10px;
+        font-size: 20px;
+        color: white;
+        background-color: #5C7AEA;
+    }
+    #question{
+        color:black;
+        border:none;
+        border-radius:3px;
+        margin-left:90px;
+        padding:5px 10px;
+    }
+    .download a{
+        padding-left:0;
+        text-decoration:underline;
+        color:white;
+    }
+    .update{
+        border:none;
+        border-radius:2px;
+        text-align:center;
+    }
+    .update a{
+      color:black;
+     padding:10px;
+      text-decoration:none;
+    }
+    .update a:hover{
+        color:black;
+        text-decoration:none;
+    }
+    .delete{
+        border:none;
+        border-radius:2px;
+        text-align:center;
+    }
+    .pdf{
+        padding:5px;
+        color:black
+    } 
+    
+    .delete a{
+        color:black;
+       padding:10px;
+        text-decoration:none;
+      }
+      .delete a:hover{
+          color:black;
+          text-decoration:none;
+      }
+      .thead{
+        font-size:15px;
+        color:black;
+        text-align:justify;
+      }
+      .navbar-brand{
+          padding:12px;
+          color:black;
+          font-weight:500px;
+          font-size:18px;
+      }
+      a:acive{
+          text-decoration:none;
+          color:white;
+      }
+    #create{
+        color:#343a40;
+        margin-left:100px;
+        margin-top:20px;
+        border:none;
+        padding:5px 10px;
+        border-radius:4px;
+       
+    }
+  
+    .id_grade{
+        font-size:15px;
+    }
+    .login {
+        margin-left: 670px;
+        color: white;
+        border-radius: 5px;
+        margin-top: 310px;
+        width: 360px;
+        padding: 10px;
+        padding-left: 65px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+  
+    body {
+        background-color: #ebebeb;
+        background-size: cover;
+    }
+    
+
+    .container {
+        width: 100%;
+        padding-top: 60px;
+        padding-bottom: 100px;
+    }
+    th{
+        text-align: start;
+        padding:13px;
+    }
+    td{
+        padding:10px;
+        text-align:start;
+    }
+    th:last-child{
+        text-align: start;
+        padding-left: 82px;
+    }
+   
+    .frame {
+        height: 425px;
+        width: 430px;
+        background-color: #ffffff;
+        background-size: cover;
+        margin-left: auto;
+        margin-right: auto;
+        border-top: solid 1px rgba(255, 255, 255, .5);
+        border-radius: 5px;
+        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all .5s ease;
+        padding-top: 107px;
+        padding-left: 60px;
+        margin-top: 200px;
+
+    }
+    h1 {
+        color: #000000;
+        font-size: 35px;
+        font-weight: 300;
+        margin-top: -69px;
+        margin-left: -75px;
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    select{
+        padding:8px;
+        width:250px;
+        color:black;
+        border:none;
+        outline:none;
+        display:grid;
+        border-radius:5px;
+    }     
+     
+      input[type=file] {
+        border: none;
+        margin-left: -4px;
+        margin-top: -3px;
+        position: absolute;
+        
+    }
+   
+   
+#profile-edit{
+    color: #14279b;
+    background-color: #5c7aea;
+    text-decoration: none;
+    border: 1px solid #14279b;
+    width: 264px;
+    margin: 57px 0;
+    padding: 5px;
+    }
+#profile-edit:hover{
+        color:white;
+        background-color:#14279b;  
+}
+#profile-edit:active{
+    color:white;
+    background-color:#14279b;
+    border:1px solid #14279b;  
+    outline:none;  
+}
+
+.chapter_create{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    boder:2px solid black;
+    width:20%;
+    margin-right:50px;
+    margin-top:200px;
+    padding:30px 50px;  
+}
+.chapter{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    margin-left: 1100px;
+    width:20%;
+    margin-top:200px;
+    padding:30px 50px;
+    position:fixed;
+
+}
+.subjectform{
+    background-color:#343a40;
+    color:white;
+   
+    margin-left: 1100px;
+    width:20%;
+    margin-top:200px;
+    padding:30px 50px;
+    position:fixed;
+
+    
+}
+#profile-btn{
+    width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 20px;
+    background-color:#b2c8df;
+    color:#14279b;
+    border:1px solid #14279b;    
+
+}
+#profile-btn:hover{
+    color:white;
+    background-color:#14279b;
+}
+#chapterlist-btn{
+    width: 150px;
+    height: 39px;
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color:#b2c8df;
+    color:#14279b;
+    padding:5px 10px;
+    outline:none; 
+    border:1px solid #14279b;     
+}
+#questionlist-btn{
+    width: 150px;
+    height: 39px;
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color:#b2c8df;
+    color:#14279b;
+    padding:5px 10px;
+    outline:none; 
+    border:1px solid #14279b;     
+}
+#questionlist-btn:hover{
+    color:white;
+    background-color:#14279b;
+}
+#chapterlist-btn:hover
+{
+    color:white;
+    background-color:#14279b;  
+}
+#userdetail-btn
+{
+    width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 56px;
+    margin-bottom:17px;
+    background-color:#b2c8df;
+    color:#14279b;
+    border:1px solid #14279b;  
+}
+
+#userdetail-btn:hover{
+    background-color:#14279b;
+    color:white;
+}
+
+#subject-btn{
+    width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 20px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;    
+}
+#grade-btn{      
+      
+        color:#14279B;
+        outline:none;            
+        background-color:#b2c8df;    
+        border:1px solid  #14279B;  
+        border-radius:5px;
+     
+}
+#grade-btn:hover{
+    color:white;
+    background-color:#14279b;
+
+}
+.question-btn{    
+        width: 110px;
+        height: 39px;
+        margin-left: 68px;
+        margin-top: 56px;
+        margin-bottom:17px;
+        background-color:#b2c8df;
+        color:#14279b;
+        border:1px solid #14279b;  
+}
+#edit{
+    color: white;
+    width: 25px;
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: #14279b;
+}
+#delete{
+    color:black;
+    background-color:#EAE3C8;
+    width: 25px;
+    padding: 7px 15px;
+    border-radius: 5px;
+}
+.question-btn:hover{
+    color:white;
+    background-color:#14279b;
+}
+button {       
+    border: none;
+    border-radius: 5px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+    font-weight: 800;    
+} 
+.user{
+    width: 18;
+    height: 540px;
+    margin-left: 131px;
+    color: white;
+    background-color: #5c7aea;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 50px;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 5px;
+    position:fixed;
+} 
+.image{
+    margin-bottom:30px;
+    margin-left:150px;
+}
+img{
+    width:120px;
+}
+.container3{
+    margin-top:175px;
+}
+.chapter-card{
+    width: 87%;
+    color: white;
+    background-color: #5c7aea;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 148px;
+}
+
+.user label{
+    width:100px;
+    display:inline-block;
+}
+.profile-label{
+    display:inline;
+}
+.fullname{
+display:inline;
+}
+.firstname{
+    display:inline;
+    }
+.lastname{
+    display:inline;
+    }
+.std{
+    display:inline;
+    }  
+.sec{
+    display:inline;
+    }
+.address{
+    display:inline;
+    }
+.userdataForm{
+    display:flex;
+} 
+
+#userDetails{
+    background-color: #b2c8df;
+    float: right;
+    margin-right: 50px;
+    display:none;
+    width: 21%;
+    margin-top: -20px;
+    padding: 30px 70px;
+    position: fixed;
+    margin-left: 1450px;
+    height: 92%;
+}
+
+.question-paper-card{
+    margin-left: 100px;
+    font-size: 15px;
+    background-color: #343A40;
+    color: white;
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+}
+.question_create{
+    background-color: #b2c8df;
+    color: white;
+    margin-left: 1423px;
+    width: 20%;
+    margin-top: 174px;
+    padding: 30px 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.question-card{
+    margin-left: 173px;
+    font-size: 15px;
+    width: 285px;
+    padding: 22px;
+    background-color: #5c7aea;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.question-list{
+    width: 1000px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 45px;
+    margin-top: -1170px;
+    margin-left: -116px;
+}
+.question-card p{
+    color:white;
+    width:200px;
+    display:block;
+}
+.question-card label{
+    width:100px;
+    display:inline-block;
+}
+{% comment %} bhai {% endcomment %}
+.chapter_create{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    border:2px solid black;
+    width:20%;
+    margin-right:50px;
+    margin-top:200px;
+    padding:30px 50px;  
+}
+.chapter{
+    background-color:#435cf9;
+    color:white;
+    float:right;
+    margin-left: 1100px;
+    width:20%;
+    margin-top:200px;
+    padding:30px 50px;
+    position:fixed;
+
+}
+.subject-title{
+    margin-right: 6%;
+    margin-bottom: 0%;
+}
+.subjects-by-grade label{
+    width: 100px;
+    display: inline-block;
+    color: #000000;
+}
+.subjects-by-grade a{
+    width: 50px;
+    display: inline;
+    color: white;
+    /* margin: 0% 0%; */
+    /* padding-left: 10px;
+    padding-top: 10px; */
+    padding: 5px;
+}
+.subject-title-subjects{
+    margin-right: 36%;
+}
+.subject-head{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+.grade-container h2{
+    margin-left: 45%;
+    margin-top: 5%;
+    color: #14279b;
+}
+.grade-container hr{
+    width: 30%;
+    margin-left: 32%;
+    border: 2px solid gray;
+}
+.subjects-by-grade .cards{
+    display: grid;
+    width: 65%;
+    padding-left: 0%;
+    margin: 0% 15% 15%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+} 
+.grade-container button{
+    color: transparent;
+}
+.chapter-cards{
+    display: grid;
+    width: 65%;
+    padding-left: 0%;
+    margin: 0% 15% 15%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+}
+#back-btn-chapter{
+    display: inline;
+}
+
+.chapter-cards .chapter-card
+{
+    min-height: 30vh;
+    padding: 15% 12%;
+    cursor: pointer;
+    /* padding-left: 12%; */
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.subjects-by-grade  .subject-card{
+
+    max-height: 30vh;
+    padding: 15% 12%;
+    cursor: pointer;
+    /* padding-left: 12%; */
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.grade-list .card{
+    height: 15vh;
+    padding-top: 35%;
+    cursor: pointer;
+    padding-left: 42%;
+    font-size: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.grade-list .cards{
+    display: grid;
+    width: 40%;
+    padding-left: 5%;
+    margin: 0% 25% 20%;
+    padding-top: 5%;
+    grid-template-columns: auto auto auto;
+    gap: 8%;
+}
+
+.subject-list{
+    width: 170%;
+    margin-top: 5%;
+}
+option{
+    font-size: 16px;
+}
+.subject-list label{
+    width: 10%;
+    /* display: inline-block; */
+}
+.chapter-list label{
+    width: 10%;
+}
+
+#gradeforsubject{
+    /* display: block; */
+    /* text-align: center; */
+    margin-left: 55%;
+    padding-left: 10px;
+}
+.subject-container{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: space-around;
+}
+.subject-container-1 input{
+    /* background-color: #000000; */
+    /* color: white; */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.subject-container-1{
+    flex-basis: 60%;
+    margin-left: 5%;
+    /* margin-top: 10vh; */
+}
+.subject-container-2{
+    flex-basis: 30%;
+    margin-right: 5%;
+}
+.subject-container-1 .cards{
+    display: grid;
+    width: 55%;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+}
+.subject-container-1 .card{
+    height: 25vh;
+    padding: 14%;
+    font-size: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* width: 15%; */
+}
+.subjectform{
+    background-color:#435cf9;;
+    color:white;
+    /* margin-left: 70%; */
+    /* width:20%; */
+    margin-top: 30vh;
+    padding:30px 50px;
+    /* position:fixed; */
+
+}
+.chapterlist a{
+    color: white;
+    padding: 8px;
+}
+.chapterlist label{
+    color: #000000;
+    display: inline-block;
+    width: 100px;
+}
+.chapterlist h4{
+    margin-left: 45.5%;
+    margin-top: 1%;
+    /* margin-right: 45%; */
+    color: #14279b;
+}
+
+
+.chapter-list table{
+    margin: 5%;
+}
+
+
+/* #chapter-btn{
+    /* width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 20px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;    
+} */
+.chapter-btns{
+    display: flex;
+    justify-content: space-around;
+}
+.chapter-btns button{
+    padding: 5px 10px;
+    font-size: 12px;
+}
+#submit
+{
+    width: 110px;
+    height: 39px;
+    margin-left: 68px;
+    margin-top: 50px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;  
+}
+
+#subject-btn{
+    width: 30%;
+    height: 39px;
+    margin-left: 35%;
+    margin-top: 20px;
+    background-color:#343a40;
+    color:white;
+    border:1px solid white;    
+}
+
+button {       
+    border: none;
+    border-radius: 5px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+    font-weight: 800;    
+} 
+
+.userdataForm{
+    display:flex;
+} 
+.userDetails{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    margin-right:50px;
+    width:20%;
+    margin-top:-5px;
+    padding:30px 50px;
+    position:fixed;
+    margin-left: 600px;
+}
+.userDetails1{
+    background-color:#343a40;
+    color:white;
+    float:right;
+    margin-right:50px;
+    width:20%;
+    margin-top:0px;
+    padding:30px 50px;
+    position:fixed;
+    margin-left: 800px;
+}
+.question-paper-card a{
+    color: blue;
+}
+.question-paper-card{
+    font-size: 15px;
+    /* background-color: #435cf9; */
+    color: black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10%;
+}
+.question-paper-subject{
+    display: flex;
+    justify-content: space-around;
+    margin: 5%;
+}
+.question-paper{
+    flex-basis: 40%;
+    font-size: 16px;
+    background-color: #435cf9;
+    padding: 3%;
+    color: white;
+}
+.question-paper-form{
+            background-color:#435cf9;
+            width:20%;
+            padding:30px 50px;
+            /* flex-basis: 30%; */
+}
+.prev-question-papers{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5%;
+    margin: 5%;
+}
+.prev-question-heading h2,.prev-question-heading h3{
+    text-align: center;
+    color: #14279b;
+} 
+
+#subject-title-question{
+    margin-bottom: 2%;
+}
+
+.prev-question-heading hr{
+    width: 30%;
+    margin-left: 36%;
+    border: 2px solid gray;
+}
+
+#get-questions-button{
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    margin: 2% 10% 5%;
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid">        
+       
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"        
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        
+        <span class="navbar-toggler-icon"></span>        
+        </button>        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">            
+                <li class="nav-item">
+                <a id="nav-profile" >Profile</a>            
+            </li>       
+           
+            <li class="nav-item">            
+            <a id="nav-academics">Academics</a>            
+            </li>            
+            {% comment %} <li class="nav-item">            
+            <a href="/f-academics/subject">Subject</a>            
+            </li>            
+            <li class="nav-item">            
+            <a href="/f-academics/chapter">Chapter</a>            
+            </li>        {% endcomment %}
+            <li class="nav-item">            
+                <a id="nav-chapterlist">ChapterList</a>            
+                </li>        
+            <li class="nav-item">            
+            <a id="nav-question">Question</a>      
+            </li> 
+            <li class="nav-item">            
+                <a id="nav-questionpaper">QuestionPaper</a>      
+                </li>    
+            <li class="nav-item">            
+                <a href="#" onclick="logout()">Logout</a>            
+                </li>  
+                <li class="nav-item">
+                    <a id="nav-students">Students</a>            
+                </li>        
+                  
+                <li class="nav-item">            
+                    <a id="nav-staffs" >Staff</a>            
+                    </li>  
+            </ul>           
+            </div>         
+            </div>              
+            </nav>
+    {% block subject %}{% endblock %}
+    {% block content%}{% endblock %}
+    {% block profile %}{% endblock %}
+    {% block chapter %}{% endblock %}
+    {% block userd %}{% endblock %}
+    {% block question %}{% endblock %}
+    {% block chapterlist %}{% endblock %}
+    <script>
+        var host = window.location.protocol + "//" + window.location.host;
+        document.getElementById('nav-profile').href= `${host}/profile/`
+        document.getElementById('nav-academics').href= `${host}/academics`
+        document.getElementById('nav-chapterlist').href= `${host}/chapterlist`
+        document.getElementById('nav-question').href= `${host}/question`
+        document.getElementById('nav-questionpaper').href= `${host}/question-paper`
+        document.getElementById('nav-students').href= `${host}/students`
+        document.getElementById('nav-staffs').href= `${host}/staffs`
+        function logout(){
+            let token=localStorage.getItem("token")            
+            console.log(token)            
+            fetch('https://schooltestproject.herokuapp.com/auth/logout/',            
+            {            
+            method: 'GET',            
+            headers: {            
+            'Content-Type': 'application/json',            
+            'Authorization':'token'+' '+token,            
+            // 'Content-Type': 'application/x-www-form-urlencoded',            
+            }            
+            }) .then(response => response.text())            
+            window.location.href='login'            
+            } 
+        </script>
+
+        
+</body>
+</html>
